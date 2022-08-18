@@ -1,14 +1,12 @@
-// import player from '@vimeo/player';
+import Player from '@vimeo/player';
+import throttle from 'lodash.throttle';
 
-// const iframe = document.querySelector('iframe');
-// const iframePlayer = new Vimeo.Player(iframe);
+const iframe = document.querySelector('iframe');
+const iframePlayer = new Player(iframe);
 
-// iframePlayer.on('play', function () {
-//   console.log('played the video!');
-// });
+const getTime = function (evt) {
+  localStorage.setItem('videoplayer-current-time', evt.seconds);
+};
 
-// iframePlayer.getVideoTitle().then(function (title) {
-//   console.log('title:', title);
-// });
-
-console.log('hello');
+iframePlayer.on('timeupdate', throttle(getTime, 1000));
+iframePlayer.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
