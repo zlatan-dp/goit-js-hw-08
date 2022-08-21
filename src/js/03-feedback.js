@@ -19,7 +19,8 @@ function saveData(evt) {
 function submitData(evt) {
   evt.preventDefault();
   console.log(
-    `email: ${evt.currentTarget.email.value}, message: ${evt.currentTarget.message.value}`
+    formData
+    //`email: ${evt.currentTarget.email.value}, message: ${evt.currentTarget.message.value}`
   );
   evt.currentTarget.reset();
   localStorage.removeItem(FEEDBACK_FORM_KEY);
